@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cv3cpu"
+version = "0.1.0"
+description = "PyTorch-free, low-memory CosyVoice 3 text-to-speech inference on CPU"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Nardi Xhepi" }]
+keywords = ["tts", "text-to-speech", "cosyvoice", "cpu", "numpy", "quantization"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+]
+dependencies = ["numpy>=1.22"]
+
+[project.optional-dependencies]
+# Only needed to enroll a new voice: campplus.onnx and speech_tokenizer_v3.onnx
+# are run once per speaker, never during synthesis.
+enroll = ["onnxruntime>=1.16"]
+# The test suite needs nothing else: it runs against committed fixtures.
+# safetensors is optional -- it only enables the interop tests, which skip without it.
+dev = ["pytest>=7", "safetensors"]
+# Only for regenerating tests/fixtures with tools/make_reference_fixture.py.
+fixtures = ["torch", "transformers==4.51.3", "x-transformers==2.11.24", "einops",
+            "omegaconf", "librosa", "torchaudio", "regex"]
+
+[project.urls]
+Homepage = "https://github.com/nardi-xhepi/cosyvoice3-cpu"
+Source = "https://github.com/nardi-xhepi/cosyvoice3-cpu"
+
+[project.scripts]
+cv3cpu = "cv3cpu.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["cv3cpu*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "tools"]

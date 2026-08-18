@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+
+# generated models and audio, never the committed test fixtures
+*.cvw
+*.wav
+*.npz
+!tests/fixtures/*.npz

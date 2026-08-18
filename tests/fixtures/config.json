@@ -1,0 +1,18 @@
+{
+ "hid": 64,
+ "layers": 2,
+ "heads": 2,
+ "kv": 1,
+ "inter": 128,
+ "vocab": 256,
+ "dim": 128,
+ "depth": 2,
+ "nhead": 2,
+ "dhead": 64,
+ "speech_tokens": 48,
+ "base_ch": 32,
+ "f0_ch": 32,
+ "seed": 20240816,
+ "n_mel": 24,
+ "source": "tools/make_reference_fixture.py"
+}

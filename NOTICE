@@ -1,0 +1,19 @@
+cv3cpu — PyTorch-free CosyVoice 3 inference on CPU
+Copyright 2026 Nardi Xhepi
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This is an independent reimplementation of the inference path of CosyVoice 3
+(https://github.com/QwenAudio/CosyVoice), Copyright Alibaba Inc., which is also
+distributed under the Apache License, Version 2.0.  No upstream source is
+vendored here; the algorithms, tensor layouts and checkpoint key names follow
+that reference so the released weights load unchanged.
+
+The model weights themselves are not part of this project and are governed by
+their own licence:
+https://huggingface.co/FunAudioLLM/Fun-CosyVoice3-0.5B-2512
+
+tests/fixtures contains a small randomly-initialised checkpoint together with
+the outputs the reference implementation produced for it, frozen so the test
+suite can check this runtime against it without depending on it.  It carries no
+trained weights.
